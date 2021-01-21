@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "jira-by-nero": {
+      "hosting": {
+        "jira-project": [
+          "jira-by-nero"
+        ]
+      }
+    }
+  }
+}

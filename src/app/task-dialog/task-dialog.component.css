@@ -1,0 +1,23 @@
+mat-form-field{
+  width: 100%;
+}
+
+mat-select-trigger{
+  display: flex;
+  align-items: center;
+}
+
+mat-select-trigger > img{
+  height: 20px;
+  border-radius: 50%;
+}
+
+.option{
+  display: flex;
+  align-items: center;
+}
+
+.select-img{
+  height: 20px;
+  border-radius: 50%;
+}

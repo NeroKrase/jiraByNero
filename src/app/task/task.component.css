@@ -1,0 +1,33 @@
+:host {
+  display: block;
+}
+
+.item {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.assignee-photo{
+  height: 30px;
+  border-radius: 50%;
+}
+
+.user-data{
+  display: flex;
+  align-items: center;
+}
+
+.user-data > p {
+  margin: 0 10px 0 0;
+}
+
+.card-footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icons{
+  display: flex;
+  align-items: center;
+}

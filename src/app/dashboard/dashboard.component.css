@@ -1,0 +1,78 @@
+mat-toolbar {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toolbar-block{
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.user-name{
+  font-weight: 200;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.toolbar-block > button{
+  border-radius: 50%;
+}
+
+.content-wrapper {
+  max-width: 1400px;
+  margin: auto;
+}
+
+.user-avatar{
+  height: 50%;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container {
+  width: 400px;
+  margin: 0 25px 25px 0;
+}
+
+.list {
+  border: solid 1px #ccc;
+  min-height: 60px;
+  border-radius: 4px;
+}
+
+app-new-task {
+  margin-bottom: 30px;
+}
+
+.empty-label {
+  font-size: 2em;
+  text-align: center;
+  opacity: 0.7;
+  color: #ffffff;
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}
+
+.cdk-drag-animation {
+  transition: transform 250ms;
+}
+
+mat-card{
+  background-color: #4791db;
+}
+
+.add-button{
+  display: block;
+  margin-bottom: 20px;
+  background-color: #4791db;
+}

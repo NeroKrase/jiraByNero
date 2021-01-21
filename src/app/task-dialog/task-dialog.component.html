@@ -1,0 +1,61 @@
+<form [formGroup]="taskForm">
+  <mat-form-field appearance="outline">
+    <mat-label>Title</mat-label>
+    <input formControlName="title" matInput [(ngModel)]="data.task.title">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Description</mat-label>
+    <textarea formControlName="description" matInput [(ngModel)]="data.task.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Issue type</mat-label>
+    <mat-select  formControlName="issue" #issueSelect [(ngModel)]="data.task.issue">
+      <mat-select-trigger><mat-icon [ngStyle]="{color: issueSelect.value.color}">{{issueSelect.value.icon}}</mat-icon>&nbsp;{{issueSelect.value.title}}</mat-select-trigger>
+      <mat-option *ngFor="let issue of issues" [value]="issue">
+        <mat-icon [ngStyle]="{color: issue.color}">{{issue.icon}}</mat-icon>{{issue.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Assignee</mat-label>
+    <mat-select formControlName="assignee" #assigneeSelect [(ngModel)]="data.task.assignee">
+      <mat-select-trigger><img src="{{assigneeSelect.value.photoURL}}" alt="">&nbsp;{{assigneeSelect.value.displayName}}</mat-select-trigger>
+      <mat-option *ngFor="let assignee of usersService.users" [value]="assignee">
+        <div class="option"><img class="select-img" src="{{assignee.photoURL}}" alt="">&nbsp;{{assignee.displayName}}</div>
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Priority</mat-label>
+    <mat-select formControlName="priority" #prioritySelect [(ngModel)]="data.task.priority">
+      <mat-select-trigger><mat-icon [ngStyle]="{color: prioritySelect.value.color}">{{prioritySelect.value.icon}}</mat-icon>&nbsp;{{prioritySelect.value.title}}</mat-select-trigger>
+      <mat-option *ngFor="let priority of priorities" [value]="priority">
+        <mat-icon [ngStyle]="{color: priority.color}">{{priority.icon}}</mat-icon>{{priority.title}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Choose a date</mat-label>
+    <input formControlName="date" [value]="currentDate" [(ngModel)]="data.task.dueDate" matInput [min]="minDate" [matDatepicker]="picker">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <div mat-dialog-actions>
+    <button [disabled]="taskForm.invalid" mat-button [mat-dialog-close]="{ task: data.task }">OK</button>
+    <button mat-button (click)="cancel()">Cancel</button>
+    <button
+      *ngIf="data.enableDelete"
+      mat-fab
+      color="primary"
+      aria-label="Delete"
+      [mat-dialog-close]="{ task: data.task, delete: true }">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</form>

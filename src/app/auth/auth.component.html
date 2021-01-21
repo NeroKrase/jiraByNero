@@ -1,0 +1,48 @@
+<div *ngIf="auth.user$ | async as user; else login">
+  <mat-spinner></mat-spinner>
+</div>
+
+<ng-template #login>
+  <div class="wrapper">
+    <mat-card class="form">
+      <h1 class="title">Login</h1>
+      <form [formGroup]="loginForm">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput matNativeControl
+                 placeholder="example@email.com"
+                 name="email"
+                 formControlName="email"
+                 required
+          >
+        </mat-form-field>
+        <span class="error" *ngIf="loginEmail.invalid && loginEmail.touched">
+                Please, enter a valid email
+            </span>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput
+                 [type]="hide ? 'password' : 'text'" matNativeControl
+                 placeholder="password"
+                 name="password"
+                 formControlName="password"
+                 required
+          >
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                  [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+        <span class="error"
+              *ngIf="(loginPassword.errors?.minlength || loginPassword.errors?.required) && loginPassword.touched">
+                Password must contain at least 6 characters
+              </span>
+
+        <span class="error" *ngIf="loginPassword.errors?.pattern && loginPassword.touched">
+                Password must contain at least one numeric and alphabetical character
+              </span>
+        <button class="google-button" mat-button (click)="auth.googleSignIn()">Sign In With Google</button>
+      </form>
+    </mat-card>
+  </div>
+</ng-template>

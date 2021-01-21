@@ -1,0 +1,15 @@
+<mat-card class="item" (dblclick)="edit.emit(task)">
+  <h2>{{ task.title }}</h2>
+  <p>{{ task.description }}</p>
+  <p *ngIf="task">Deadline: {{task.dueDate.seconds * 1000 | date:'shortDate'}}</p>
+  <div class="card-footer">
+    <div class="icons">
+      <mat-icon [ngStyle]="{color: task.issue.color}">{{task.issue.icon}}</mat-icon>
+      <mat-icon [ngStyle]="{color: task.priority.color}">{{task.priority.icon}}</mat-icon>
+    </div>
+    <div class="user-data">
+      <p>{{task.assignee.displayName}}</p>
+      <img class="assignee-photo" src="{{task.assignee.photoURL}}" alt="">
+    </div>
+  </div>
+</mat-card>
